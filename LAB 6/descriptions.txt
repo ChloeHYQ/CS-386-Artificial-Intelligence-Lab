@@ -1,0 +1,35 @@
+150100017
+CSE B.Tech
+Samarjeet Sahoo
+
+Explanations to the task
+
+Task 1 :
+In the initializeUniformly function, I repeated all possible legal positions till the total no of particles becomes greater than or equal to the number of particles required.
+
+In the getBelief distribution function, I just set the belief of a particular position as the fraction of particles denoting that position. I also included the jailposition in this case.
+
+In the observe function, I have a weights vector to denote the weight of each possible position.
+Then depending on the probability from the emission model using the true distance I assign an initial weight to each possible position. Then I multiply the weights by the no of particles corresponding to that position, so that we take into account the particles in the sample while determining the weights. Then, I just normalize the weights and then generate samples from the weights till the number of samples become equal to self.numParticles
+These new set of samples are the set of the new particles which we needed
+I took care of the special case, when the noisy distance returns None, meaning that the ghost has been captured. I updated all particles to denote to the jailPosition.
+Also, when the sum of weights assigned become zero, I reinitialize the particles to correspond to uniform distribution by using the initializeUniformly function.
+
+Task 2:
+In the elapseTime function, I go through each position represented by a particle in self.particle and generate a new position distribution for that particle. Then I just take a sample according to that distribution. So, basically I generate a new particle in time t+1 from the particle in time t.
+
+Task 3:
+In the initializeParticles function, I made a temporary list containing all possible tuples of legal positions of the ghosts. Then I added a randomly shuffled version of this list to the self.particles list till the total no of particles became atleast as much as the self.numParticles.
+
+In the getBelief distribution function, I generate a list containing all possible tuples of possible position of each ghost (this time including the jail position for each ghost). Then, I just set the belief of a particular position tuple as the fraction of particles denoting that position tuple of ghost positions.
+
+In the observe function, I set the weight of each position as the probability of that combination of positions of the ghosts using the true distance and the emission model. If two particles correspond to the same position tuple then their weights are obviously added up. The weights themselves are the product of weights of the individual true distances for the individual ghosts. Once the weights are correctly assigned and normalized, I generate the required no of new particles from the weights.
+Again as in task 1, the test cases for the jail cases and the total weight = 0 case have been appropriately handled as mentioned in the already given comments.
+
+Task 4:
+In the elapseTime function, I just get a new Position distribution from each position in the position tuple corresponding to a single particle and then generate a sample from that distribution. I accumulate the samples generated for each ghost as a new position tuple for each old particle to give the new particle at time t+1. 
+
+Answer to the question asked:
+Difference between testcase1 and testcase3 of the task 4:
+In testcase1 we are not making use of the information about the position of the ghost from the readings and hence the shading of squares does not respond to the actual changes in ghost position, rather only to the predefined knowledge of the ghost transition probabilities. 
+In testcase3 we are making observations too, so the changes in shading are according to the actual changes in ghost position in addition to the predefined knowledge of world to world transition and not just the predefined knowledge of ghost transition.

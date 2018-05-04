@@ -1,0 +1,19 @@
+Roll no - 150100017
+
+Question 1 answer:
+If Pacman is boxed in:
+The Pacman only has one reading, that is the observed manhattan distance of a ghost from its position, but it does not have the direction information . So, as a result, there are multiple positions in different directions which have the same manhattan distance from pacman. So the beliefs of the pacman about the ghosts being in those multiple positions is almost the same. So, pacman has trouble identifying the exact location of the ghost if he is boxed in and can't move.
+
+If Pacman is able to move:
+Now the pacman can change his position and observe more information about the position of the ghost. So, if initially there are say 4 candidate positions which are at the same manhattan distance from Pacman. Then the pacman will move towards one of those positions and will observe the new reading of the distance. If the pacman made a move towards the actual ghost position, then the observed manhattan distance will most likely decrease, strengthening pacman's belief about the ghost being in that particular position. If the move was towards one of the 3 other incorrect candidate positions, then the observed manhattan distance of the ghost will most likely increase and will decrease the belief of the pacman about the ghost being in that position.
+So, if the pacman is able to move, then the pacman can eliminate the incorrect positions of the 
+ghost (which had the same manhattan distance as the actual position's distance) and can ultimately find out the actual relevant position.
+
+
+Question 2 answer:
+
+In the first and the fourth test cases of q2 (1-ExactElapse.test and 4-ExactElapse.test), there is hardly any difference in the shading of the squares, indicating that almost all positions are equally likely for the ghost to be in. This can be easily explained because in these cases, the ghost is a random agent which moves randomly in all directions.
+
+In the second and third test cases of q2 (2-ExactElapse.test and 3-ExactElapse.test), we can clearly see that the bottom squares are lighter compared to the squares at the top. This can be explained as the ghost agents in these test cases are the GoSouth agents which have more probability for taking the bottom(southwards) transition compared to other directions.
+
+Note : In all cases there is a slight difference between the coloring of the squares not surrounded by walls and the squares near the walls or in the corners. This is because the squares which can be reached by more no of positions will have higher beliefs compared to the squares in which there are lesser positions to reach from. (Eg corner squares can be reached from by only two of its neighbors, a boundary square by three of its neighbors, a normal square can be reached from by all of its 4 neighbors, a dead end square can be reached from only one neighbor etc.). But these differences are not as significant compared to the differences in the coloring of the northern and southern squares in case of the GoSouth Agents.

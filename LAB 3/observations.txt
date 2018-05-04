@@ -1,0 +1,10 @@
+Observations:
+The numbers are reported for the submitted city graphs
+As we can see from the graphs:
+Task 2 - Random initialisation has a very large initial cost(in the range of 3000 - 3500) and thus takes large no of iterations (60 - 70) to converge because of poor choice of initial tour
+Task 3 - Greedy initialisation using the nearest neighbours performs significantly better than random initialisation. The initial cost itself is way better (in the range of 750s to 850s) compared to random initialisation and the no of iterations to converge is also significantly lesser (in the range of 13-18). One thing which can affect the performance of this kind of initialisation is the starting point from which the nearest neighbour is applied. There was one city with a cost of 750s and took lesser iterations(around 15)
+Task 4 - Initialisation using min spanning tree definitely worked better than random initialisation, and in my opinion is comparable to that of the nearest neighbour approach. The initial cost is around 840 and the no of iterations is around 18. Here also, the starting city (which is the root) matters.
+
+When it comes to comparing min spanning tree vs greedy, I can't say one is definitely better than the other. Depending on the starting cities in both the algorithms, one algorithm may outperform the other in specific cases, though the difference won't be very significant. But the certain thing is these two heuristical approaches definitely work way better than random initialisation, in terms of the initial costs, final converged cost, and the no of iterations.
+Note : The observations about the comparision hold in general even when tried on different cities.
+eg tsp50 city again gives similar values for greedy and spanning tree (from 38000 to some 30000)

@@ -1,0 +1,24 @@
+Samarjeet Sahoo
+150100017
+CSE BTech
+
+Task 2:
+
+Variation with number of training data points 'seen':
+As we can see, the validation accuracy in general increases with no of data points seen. But we can see a clear dip between 1000 points and 1500 points. The possible reason for this is that the first 500 data points have been seen twice at this stage and the weights are more "biased" to correctly classify these 500 points compared to the other 500 points (which have been seen only once). Thus, it is sort of overfitting at this stage and hence not generalising well to the validation data. Then we notice after seeing all the points twice (2000 points), the validation set accuracy again increases as all the different points of the training data contribute more evenly.
+
+Variation with training set size in each iteration:
+We can see the validation and the test set accuracy increase consistently with increase in no of training set size initially upto around 500-600. Then we have a dip in both the validation and test set for increase in set size upto around 800. Then it again increases. The dip can be because of the following reasons: The training data order is static without any random shuffle. This can lead to a "bias" in case some examples of similar type are in one region. These examples then affect the weights like the first case, where they lead to some sort of overfitting,(by classifying only particular types of points correctly). So, when we encounter a new type of points, it can lead to decrease in the validation accuracy because these types of points were never seen and trained on before. Hence, the possible decrease in accuracy though the training set size increases. Ideally, we should have shuffled the training set to get a more consistent performance.
+
+
+Additionally, answer the following questions.
+Q. With a 1000 data points, is your test accuracy close to 100%? Why (if it is) and why not (if it is not)?
+Ans : 
+No, it is not close to 100%. It is infact only 74% on the test set after 3 iterations using only basic features. This may be because the data points may not be linearly separable in the first place and the no of iterations of training might not be sufficient. But the main point is the linear separability of the data features passed as input. We can see in the advanced feauture extractors, where we add new features, the accuracy improves to over 80% (at the expense of more time) in the same no of iterations. This is because the newly added features are making the features more linearly separable leading to lesser errors. Hence, we don't get an accuracy close to 100% in this case.
+(All the percentage figures are for the test set)
+
+
+Q. Imagine a point on the x axis with 0 training points: that is, a classifier that must make predictions based on no training data at all! How would such a classifier make predictions? On this data set, what would be the accuracy of such a classifier?
+Ans:
+Well, on random initialisation of weights, and no training at all the results should be close to the probability of a randomly chosen class to be correct which is 1/10 * 100 = 10%
+This is confirmed in the plot_iterations where we have the validation set accuracy to be around 10% when 0 data points have been seen.

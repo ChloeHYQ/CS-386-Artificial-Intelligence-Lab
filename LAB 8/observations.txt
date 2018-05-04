@@ -1,0 +1,55 @@
+Roll No - 150100017
+SAMARJEET SAHOO
+
+Most of the parameters can be inferred from the arguments
+I have run the tasks for the following randomly chosen seeds.(Okay 2018 is because of current year)
+(1,5,16,87,119,2018). The first 6-tuple in the explanation gives the test accuracy for these random seeds respectively.
+The next 5-tuple gives the value of 
+(number of hidden layers, list of number of nodes in the hidden layers, learning rate, batch size, number of epochs)
+
+Main architecture
+hidden layers - no of hidden nodes
+2.1
+0-0
+
+2.2
+1-4
+
+2.3
+1-6
+
+2.4
+1-2
+
+MNIST
+3-50,50,50
+
+2.1
+So, in case of linearly separable dataset, we don't even need a hidden layer because we don't need the non linearity. So even a simple linear mapping from input to output can achieve high accuracy.
+(98.8,99.1,99.8,100,99.2,100)
+(0, [], 0.5, 1, 5)
+
+
+
+2.2
+In case of XOR, I used a single hidden layer with only 4 nodes. We just need 4 nodes to learn enough features to classify properly. 3 nodes give an accuracy at the border of 90%, so I report 4, which gave much consistent results across different seeds. Maybe, the 4 nodes are used for learning the 4 quadrants.
+(96.3,98.1,91.7,98.1,98,97)
+(1, [4], 0.1, 4, 10)
+
+
+2.3
+In case of circle , we need a single layer 6 nodes to accurately distinguish the points. We need more features here compared to the XOR case as the circle has more 'non-linearity' compared to the XOR case. Maybe the features correspond to the x square values and y square values and the weighted summation take care of the condition of lying in the circle.
+(92.4,96.9,97.7,97.6,96.4,97)
+(1, [6], 0.1, 8, 10)
+
+
+2.4 
+In case of semi circle, we need a single hidden layer with 2 nodes to accurately classify the data. We need much lesser features here compared to the previous two cases. This may be because the classifier learnt the simple trick that x<0 implies a point in the other class straight away.
+(97.8,96.9,97.6,96.9,96.7,96)
+(1, [2], 0.2, 3, 10)
+
+
+MNIST
+Since there was no constraint on the minimality of architecture I have been a bit liberal in the choice of number of nodes. This was a bit non trivial to optimize with less nodes. It was crossing 90% marginally using a single layer with 16 nodes for some random seeds, but when I tried using a deeper architecture with a lesser learning rate, it helped and easily crossed 90%. I tried some 2 hidden layer architectures but they weren't as good as 3 layer though they did cross 90% with appropriate tuning.It was more consistent for a 3 hidden layer architecture with around 20-30 nodes which I guess would be a good approx for a minimal architecture but to be on the safer side, I report and use 50 x 50 x 50 as the hidden layers.
+(93.25,93.25,93.68,93.65,93.15,93.12)
+(3, [50,50,50], 0.05, 16, 20)

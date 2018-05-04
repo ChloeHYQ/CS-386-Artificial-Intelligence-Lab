@@ -1,0 +1,9 @@
+numStates 2
+numActions 2
+start 1
+end -1
+transitions 0 0 0 1 1
+transitions 0 1 1 2 1
+transitions 1 0 1 2 1
+transitions 1 1 0 1 1
+discount  0.9
